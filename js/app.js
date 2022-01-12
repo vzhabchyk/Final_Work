@@ -1,3 +1,5 @@
+'use strict';
+
 const appContainer = document.getElementById('app');
 const routes = {
   '/': 'main.html',
