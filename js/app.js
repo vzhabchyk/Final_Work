@@ -8,16 +8,16 @@ const routes = {
   '/product': 'single-product.html'
 };
 
-function getTemplate (template) {
+function getTemplate (template, data) {
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
-    appContainer.innerHTML = xhr.responseText;
+    appContainer.innerHTML = _.template(xhr.responseText)(data);
   }
   xhr.open('GET', './templates/' + template, true);
   xhr.send();
 }
 
-getTemplate('main.html');
+getTemplate('category.html', {items:data});
 
 function navigateTo(event) {
   console.log(event);
@@ -30,9 +30,29 @@ function navigateTo(event) {
     href = event.target.getAttribute('href');
   }
 
+  let templateData = data;
+
+  if (href.startsWith('/shop')) {
+    const url = href.split('?');
+    href = url[0];
+    const searchParams = new URLSearchParams(url[1]);
+    const material = searchParams.get('material');
+    const color = searchParams.get('color');
+    if (material) {
+      templateData = _.filter(templateData, function(item) {
+        return item.material === material;
+      });
+    }
+    if (color) {
+      templateData = _.filter(templateData, function(item) {
+        return item.color === color;
+      });
+    }
+  } 
+
   const template = routes[href];
 
-  getTemplate(template);
+  getTemplate(template, {items:templateData});
   window.history.pushState({}, '', href);
 }
 

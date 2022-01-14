@@ -1,6 +1,6 @@
 <!--================Home Banner Area =================-->
 <!-- breadcrumb start-->
-<section class="breadcrumb breadcrumb_bg">
+<!-- <section class="breadcrumb breadcrumb_bg">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8">
@@ -13,7 +13,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!-- breadcrumb start-->
 
 <!--================Category Product Area =================-->
@@ -24,79 +24,18 @@
         <div class="left_sidebar_area">
           <aside class="left_widgets p_filter_widgets">
             <div class="l_w_title">
-              <h3>Browse Categories</h3>
-            </div>
-            <div class="widgets_inner">
-              <ul class="list">
-                <li>
-                  <a href="#">Frozen Fish</a>
-                  <span>(250)</span>
-                </li>
-                <li>
-                  <a href="#">Dried Fish</a>
-                  <span>(250)</span>
-                </li>
-                <li>
-                  <a href="#">Fresh Fish</a>
-                  <span>(250)</span>
-                </li>
-                <li>
-                  <a href="#">Meat Alternatives</a>
-                  <span>(250)</span>
-                </li>
-                <li>
-                  <a href="#">Fresh Fish</a>
-                  <span>(250)</span>
-                </li>
-                <li>
-                  <a href="#">Meat Alternatives</a>
-                  <span>(250)</span>
-                </li>
-                <li>
-                  <a href="#">Meat</a>
-                  <span>(250)</span>
-                </li>
-              </ul>
-            </div>
-          </aside>
-
-          <aside class="left_widgets p_filter_widgets">
-            <div class="l_w_title">
               <h3>Product filters</h3>
             </div>
             <div class="widgets_inner">
               <ul class="list">
                 <li>
-                  <a href="#">Apple</a>
+                  <a href="/shop?material=metal" onclick="navigateTo(event)">Metal</a>
                 </li>
                 <li>
-                  <a href="#">Asus</a>
-                </li>
-                <li class="active">
-                  <a href="#">Gionee</a>
+                  <a href="/shop?material=textile" onclick="navigateTo(event)">Textile</a>
                 </li>
                 <li>
-                  <a href="#">Micromax</a>
-                </li>
-                <li>
-                  <a href="#">Samsung</a>
-                </li>
-              </ul>
-              <ul class="list">
-                <li>
-                  <a href="#">Apple</a>
-                </li>
-                <li>
-                  <a href="#">Asus</a>
-                </li>
-                <li class="active">
-                  <a href="#">Gionee</a>
-                </li>
-                <li>
-                  <a href="#">Micromax</a>
-                </li>
-                <li>
-                  <a href="#">Samsung</a>
+                  <a href="/shop?material=wood" onclick="navigateTo(event)">Wood</a>
                 </li>
               </ul>
             </div>
@@ -109,19 +48,19 @@
             <div class="widgets_inner">
               <ul class="list">
                 <li>
-                  <a href="#">Black</a>
+                  <a href="/shop?color=green" onclick="navigateTo(event)">Green</a>
                 </li>
                 <li>
-                  <a href="#">Black Leather</a>
-                </li>
-                <li class="active">
-                  <a href="#">Black with red</a>
+                  <a href="/shop?color=orange" onclick="navigateTo(event)">Orange</a>
                 </li>
                 <li>
-                  <a href="#">Gold</a>
+                  <a href="/shop?color=white" onclick="navigateTo(event)">White</a>
                 </li>
                 <li>
-                  <a href="#">Spacegrey</a>
+                  <a href="/shop?color=red" onclick="navigateTo(event)">Red</a>
+                </li>
+                <li>
+                  <a href="/shop?color=colored" onclick="navigateTo(event)">Colored</a>
                 </li>
               </ul>
             </div>
@@ -134,7 +73,7 @@
           <div class="col-lg-12">
             <div class="product_top_bar d-flex justify-content-between align-items-center">
               <div class="single_product_menu">
-                <p><span>10000 </span> Product(s) Found</p>
+                <p><span><%-items.length%></span> Product(s) Found</p>
               </div>
 
               <div class="single_product_menu d-flex">
@@ -167,129 +106,19 @@
         </div>
 
         <div class="row align-items-center latest_product_inner">
-          <div class="col-lg-4 col-sm-6">
-            <div class="single_product_item">
-              <img src="./images/products/product_1.png" alt="" />
-              <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
-                <a href="#" class="add_cart"
-                  >+ add to cart</a>
+          <% items.forEach(function(item) { %>
+            <div class="col-lg-4 col-sm-6">
+              <div class="single_product_item" onclick="navigateTo(event)">
+                <img src="<%-item.imgUrl%>" alt="" />
+                <div class="single_product_text">
+                  <h4><%-item.name%></h4>
+                  <h3>$<%-item.price%></h3>
+                  <a href="#" class="add_cart">+ add to cart
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <div class="single_product_item">
-              <img src="./images/products/product_2.png" alt="" />
-              <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
-                <a href="#" class="add_cart"
-                  >+ add to cart</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <div class="single_product_item">
-              <img src="./images/products/product_3.png" alt="" />
-              <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
-                <a href="#" class="add_cart"
-                  >+ add to cart</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <div class="single_product_item">
-              <img src="./images/products/product_4.png" alt="" />
-              <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
-                <a href="#" class="add_cart"
-                  >+ add to cart</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <div class="single_product_item">
-              <img src="./images/products/product_5.png" alt="" />
-              <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
-                <a href="#" class="add_cart"
-                  >+ add to cart</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <div class="single_product_item">
-              <img src="./images/products/product_6.png" alt="" />
-              <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
-                <a href="#" class="add_cart"
-                  >+ add to cart</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <div class="single_product_item">
-              <img src="./images/products/product_7.png" alt="" />
-              <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
-                <a href="#" class="add_cart"
-                  >+ add to cart</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <div class="single_product_item">
-              <img src="./images/products/product_8.png" alt="" />
-              <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
-                <a href="#" class="add_cart"
-                  >+ add to cart</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <div class="single_product_item">
-              <img src="./images/products/product_2.png" alt="" />
-              <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
-                <a href="#" class="add_cart"
-                  >+ add to cart</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="pageination">
-              <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <i class="ti-angle-double-left"></i>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">4</a></li>
-                  <li class="page-item"><a class="page-link" href="#">5</a></li>
-                  <li class="page-item"><a class="page-link" href="#">6</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <i class="ti-angle-double-right"></i>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
+          <% }); %>
         </div>
       </div>
     </div>
