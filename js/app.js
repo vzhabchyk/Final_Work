@@ -5,8 +5,11 @@ const routes = {
   '/': 'main.html',
   '/cart': 'cart.html',
   '/shop': 'category.html',
-  '/product': 'single-product.html'
+  '/product': 'single-product.html',
+  '/contact': 'contact.html',
 };
+
+// Подгружает
 
 function getTemplate (template, data) {
   const xhr = new XMLHttpRequest();
@@ -17,7 +20,7 @@ function getTemplate (template, data) {
   xhr.send();
 }
 
-getTemplate('category.html', {items:data});
+getTemplate('main.html', {items:data});
 
 function navigateTo(event) {
   console.log(event);
@@ -54,14 +57,21 @@ function navigateTo(event) {
 
   getTemplate(template, {items:templateData});
   window.history.pushState({}, '', href);
-}
+}``
 
 window.addEventListener('popstate', function(event) {
+  console.log(event);
   const href = event.target.location.pathname;
   const template = routes[href];
 
   getTemplate(template);
 });
 
-
+function showProduct(event) {
+  const id = +event.target.getAttribute('data-id');
+  const product = data.find(function(item) {
+    return item.id === id;
+  });
+  getTemplate('single-product.html', product);
+}
 
