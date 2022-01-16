@@ -31,81 +31,34 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div class="media">
-                  <div class="d-flex product_preview">
-                    <img src="./images/products/product_1.png" alt="" />
+            <% items.forEach(function(item) { %>
+              <tr>
+                <td>
+                  <div class="media">
+                    <div class="d-flex product_preview">
+                      <img src="<%-item.imgUrl%>" alt="" />
+                    </div>
+                    <div class="media-body">
+                      <p><%-item.name%></p>
+                    </div>
                   </div>
-                  <div class="media-body">
-                    <p>Minimalistic shop for multipurpose use</p>
+                </td>
+                <td>
+                  <h5>$<%-item.price%></h5>
+                </td>
+                <td>
+                  <div class="product_count" onclick="changeCartCount(event)">
+                    <span class="input-number-decrement ti-angle-down" data-id="<%-item.id%>" data-action="decrement"></span>
+                    <input class="input-number" type="text"  value="<%-item.count%>" min="0" max="10">
+                    <span class="input-number-increment ti-angle-up" data-id="<%-item.id%>" data-action="increment"></span>
                   </div>
-                </div>
-              </td>
-              <td>
-                <h5>$360.00</h5>
-              </td>
-              <td>
-                <div class="product_count">
-                  <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
-                  <input class="input-number" type="text" value="1" min="0" max="10">
-                  <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
-                </div>
-              </td>
-              <td>
-                <h5>$720.00</h5>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="media">
-                  <div class="d-flex product_preview">
-                    <img src="./images/products/product_2.png" alt="" />
-                  </div>
-                  <div class="media-body">
-                    <p>Minimalistic shop for multipurpose use</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <h5>$360.00</h5>
-              </td>
-              <td>
-                <div class="product_count">
-                  <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
-                  <input class="input-number" type="text" value="1" min="0" max="10">
-                  <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
-                </div>
-              </td>
-              <td>
-                <h5>$720.00</h5>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="media">
-                  <div class="d-flex product_preview">
-                    <img src="./images/products/product_3.png" alt="" />
-                  </div>
-                  <div class="media-body">
-                    <p>Minimalistic shop for multipurpose use</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <h5>$360.00</h5>
-              </td>
-              <td>
-                <div class="product_count">
-                  <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
-                  <input class="input-number" type="text" value="1" min="0" max="10">
-                  <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
-                </div>
-              </td>
-              <td>
-                <h5>$720.00</h5>
-              </td>
-            </tr>
+                </td>
+                <td>
+                  <h5>$<%-item.price*item.count%></h5>
+                </td>
+              </tr>
+            <% }); %>
+
             
             <tr>
               <td></td>
@@ -114,15 +67,14 @@
                 <h5>Subtotal</h5>
               </td>
               <td>
-                <h5>$2160.00</h5>
+                <h5 class="cart-total">$ <%-_.sumBy(items, function(item) { return item.price*item.count; }) %></h5>
               </td>
             </tr>
           </tbody>
         </table>
 
         <div class="checkout_btn_inner float-right">
-          <a class="btn_1" href="#">Continue Shopping</a>
-          <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
+          <a class="btn_1 checkout_btn_1" href="#" onclick="proceedToCheckout(event)"> Proceed to checkout</a>
         </div>
       </div>
     </div>

@@ -1,0 +1,124 @@
+<!--================Home Banner Area =================-->
+<!-- breadcrumb start-->
+<section class="breadcrumb breadcrumb_bg">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="breadcrumb_iner">
+          <div class="breadcrumb_iner_item">
+            <h2>Producta Checkout</h2>
+            <p>Home <span>-</span> Shop Single</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- breadcrumb start-->
+
+<!--================Checkout Area =================-->
+<section class="checkout_area padding_top">
+  <div class="container">
+    <div class="billing_details">
+      <div class="row">
+        <div class="col-lg-8">
+          <h3>Billing Details</h3>
+          <form
+            class="row contact_form"
+            action="#"
+            method="post"
+            novalidate="novalidate">
+            <div class="col-md-12 form-group p_star">
+              <input type="text" class="form-control" id="fullName" name="name" placeholder="Full name *"/>
+            </div>
+            <div class="col-md-6 form-group p_star">
+              <input
+                type="text"
+                class="form-control"
+                id="number"
+                name="phoneNumber"
+                placeholder="Phone number *"
+              />
+            </div>
+            <div class="col-md-6 form-group p_star">
+              <input
+                type="text"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Email Address *"
+              />
+            </div>
+            <div class="col-md-12 form-group p_star">
+              <select class="country_select"> 
+                <option value="Одесса">Одесса</option>
+                <option value="Харьков">Харьков</option>
+                <option value="Киев">Киев</option>
+              </select>
+            </div>
+            <div class="col-md-12 form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="zip"
+                name="zip"
+                placeholder="Postcode/ZIP"
+              />
+            </div>
+            <div class="col-md-12 form-group">
+              <div class="creat_account">
+                <input type="checkbox" id="f-option2" name="selector" />
+                <label for="f-option2">Create an account?</label>
+              </div>
+            </div>
+            <div class="col-md-12 form-group">
+              <textarea
+                class="form-control"
+                name="message"
+                id="message"
+                rows="1"
+                placeholder="Order Notes"
+              ></textarea>
+            </div>
+          </form>
+          <div class="error"></div>
+        </div>
+        <div class="col-lg-4">
+          <div class="order_box">
+            <h2>Your Order</h2>
+            <ul class="list">
+              <li>
+                <a href="#"
+                  >Product
+                  <span>Total</span>
+                </a>
+              </li>
+              <% items.forEach(function(item) { %>
+              <li>
+                <a href="#">
+                  <%-item.name%>
+                  <span class="middle"><%-item.count%></span>
+                  <span class="last">$<%-item.price * item.count%></span>
+                </a>
+              </li>
+              <% }); %>
+              <li>
+                <a href="#">
+                  Total
+                  <span>$ <%-_.sumBy(items, function(item) { return item.price*item.count; }) %></span>
+                </a>
+              </li>
+            </ul>
+            <a class="btn_3" href="#" onclick="proceedOrder(event)">Proceed Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <p id="modal-text"></p>
+    </div>
+  </div>
+</section>
+<!--================End Checkout Area =================-->

@@ -35,18 +35,7 @@
           <p><%-description%></p>
 
           <div class="card_area d-flex justify-content-between align-items-center">
-            <div class="product_count">
-              <span class="inumber-decrement"> <i class="ti-minus"></i></span>
-              <input
-                class="input-number"
-                type="text"
-                value="1"
-                min="0"
-                max="10"/>
-              <span class="number-increment"> <i class="ti-plus"></i></span>
-            </div>
-
-            <a href="#" class="btn_3">add to cart</a>
+            <a href="#" class="btn_3" data-id="<%-id%>" onclick="addToCart(event)">add to cart</a>
           </div>
         </div>
       </div>
@@ -148,13 +137,14 @@
               </div>
             </div>
             <div class="review_list">
+              <% items.forEach(function(item) { %>
               <div class="review_item">
                 <div class="media">
                   <div class="d-flex">
-                    <img src="./images/reviews/review-1.png" alt="" />
+                    <img src="<%-item.imageUrl%>" alt="" />
                   </div>
                   <div class="media-body">
-                    <h4>Blake Ruiz</h4>
+                    <h4><%-item.name%></h4>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -163,54 +153,10 @@
                   </div>
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo
+                  <%-item.message%>
                 </p>
               </div>
-              <div class="review_item">
-                <div class="media">
-                  <div class="d-flex">
-                    <img src="./images/reviews/review-2.png" alt="" />
-                  </div>
-                  <div class="media-body">
-                    <h4>Blake Ruiz</h4>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                  </div>
-                </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo
-                </p>
-              </div>
-              <div class="review_item">
-                <div class="media">
-                  <div class="d-flex">
-                    <img src="./images/reviews/review-3.png" alt="" />
-                  </div>
-                  <div class="media-body">
-                    <h4>Blake Ruiz</h4>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                  </div>
-                </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo
-                </p>
-              </div>
+              <% }); %>
             </div>
           </div>
           <div class="col-lg-6">
@@ -247,8 +193,6 @@
               <p>Outstanding</p>
               <form
                 class="row contact_form"
-                action="contact_process.php"
-                method="post"
                 novalidate="novalidate"
               >
                 <div class="col-md-12">
@@ -292,7 +236,7 @@
                   </div>
                 </div>
                 <div class="col-md-12 text-right">
-                  <button type="submit" value="submit" class="btn_3">
+                  <button type="button" value="submit" class="btn_3" data-id="<%-id%>" onclick="addReview(event)">
                     Submit Now
                   </button>
                 </div>
