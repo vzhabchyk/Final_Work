@@ -64,7 +64,7 @@ function navigateTo(event) {
 
   getTemplate(template, {items:templateData});
   window.history.pushState({}, '', href);
-}``
+}
 
 window.addEventListener('popstate', function(event) {
   console.log(event);
