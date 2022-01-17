@@ -7,7 +7,7 @@ const cleanCSS = require('gulp-clean-css');
 const connect = require('gulp-connect');
 
 function concat() {
-  return gulp.src(['./js/data.js', './js/app.js'])
+  return gulp.src(['./node_modules/lodash/lodash.js', './js/data.js', './js/app.js'])
     .pipe(gulpConcat('app.js'))
     .pipe(gulp.dest('./dist/'));
 }
